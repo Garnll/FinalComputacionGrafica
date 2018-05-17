@@ -57,7 +57,7 @@
 
 		float h = _ScreenParams.x / 2;
 		float k = _ScreenParams.y / 2;
-		float r = 100;
+		float r =sin(_Time.y * 2) * (200 * 0.5) + 100;
 
 		float hNormalized = h / _ScreenParams.x;
 		float kNormalized = k / _ScreenParams.y;
@@ -88,7 +88,7 @@
 
 		float4 result = tex2D(_MainTex, float2(i.uv.x + (x)*width*Ax, i.uv.y + (y)*heigth*Ay));
 
-		return pant;
+		return result;
 
 		}
 		ENDCG

@@ -24,9 +24,11 @@
 
 		float4 frag(v2f_img i) : COLOR
 		{
+
 		float4 c1 = tex2D(_MainTex, i.uv);
 		i.uv.y = 1- i.uv.y;
 		float c2 = tex2D(_LastFrame, i.uv);
+
 		float4 c3 = lerp(c1, c2, _Factor);
 
 		return c3;

@@ -6,10 +6,19 @@ using UnityEngine;
 public class ControllerStep : MonoBehaviour {
 
 	[Range (0,1f)]
-	public float factor;
+	private float factor;
+
+	[Range (0,1f)]
+	public float limitFactor = 0.98f;
+
 	public Shader shader;
     private RenderTexture buffer;
     private Material materialSelected;
+
+	public float MaxTimeBeforeChange = 5f;
+	private float timeBeforeChange;
+
+
 
     Material material
     {
@@ -43,7 +52,22 @@ public class ControllerStep : MonoBehaviour {
 
 		buffer = new RenderTexture (Screen.width, Screen.height, 16);
 
+		CheckIfMoovement.OnSomethingMoved += ChangeFactor;
     }
+
+	void LateUpdate()
+	{
+		if (timeBeforeChange > 0)
+		{
+			timeBeforeChange -= Time.deltaTime;
+		}
+
+		if (factor > 0 && timeBeforeChange <= 0)
+		{
+			factor -= Time.deltaTime;
+		}
+
+	}
 
     void OnRenderImage(RenderTexture entry, RenderTexture exit)
     {
@@ -63,5 +87,14 @@ public class ControllerStep : MonoBehaviour {
         {
             DestroyImmediate(materialSelected);
         }
+
+		CheckIfMoovement.OnSomethingMoved -= ChangeFactor;
     }
+
+
+	private void ChangeFactor()
+	{
+		timeBeforeChange = MaxTimeBeforeChange;
+		factor = limitFactor;
+	}
 }

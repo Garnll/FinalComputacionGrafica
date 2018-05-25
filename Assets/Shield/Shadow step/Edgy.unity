@@ -494,8 +494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55901ef6c2b0aa24992a5d455ee263ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factor: 1.66
+  limitFactor: 0.98
   shader: {fileID: 4800000, guid: bcd888c09d7ab8046bdabcb380ec8f90, type: 3}
+  MaxTimeBeforeChange: 2
 --- !u!4 &536913196 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0a3041dcda597954782f48ac8a97bf33, type: 3}
@@ -1506,6 +1507,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1887712598}
+  - component: {fileID: 1887712599}
   m_Layer: 0
   m_Name: BuildingHolder
   m_TagString: Untagged
@@ -1547,6 +1549,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1887712599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1887712597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2547e289d22d525428be6ea8b9890f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1904256755
 Prefab:
   m_ObjectHideFlags: 0
